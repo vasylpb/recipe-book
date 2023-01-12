@@ -22,11 +22,11 @@
       <ul class="dropdown-menu">
         <li>
           <a href="#"
-            ><span (click)="onAddToShoppingList()">To Shopping List</span></a
+            ><span style="display: block" (click)="onAddToShoppingList()">To Shopping List</span></a
           >
         </li>
-        <li><a><span (click)="onEditRecipe()">Edit Recipe</span></a></li>
-        <li><a>Delete Recipe</a></li>
+        <li><a><span (click)="onEditRecipe()" style="display: block">Edit Recipe</span></a></li>
+        <li><a style="display: block" (click)="onDeleteRecipe()">Delete Recipe</a></li>
       </ul>
     </div>
   </div>
