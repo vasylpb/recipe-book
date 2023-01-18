@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { User } from './user.model';
+import { environment } from '../../environments/environment';
 
 export interface AuthResponseData {
   kind: string;
@@ -25,7 +26,7 @@ export class AuthService {
   signup(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBd4d1b8BHDh2o4yWQxIpwYHeE-Zz0oudA`,
+        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.webAPIKey}`,
         {
           email,
           password,
@@ -44,7 +45,7 @@ export class AuthService {
   login(email, password) {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBd4d1b8BHDh2o4yWQxIpwYHeE-Zz0oudA',
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.webAPIKey}`,
         { email, password, returnSecureToken: true }
       )
       .pipe(
